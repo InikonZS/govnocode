@@ -107,14 +107,19 @@ class DoubleCard extends Control {
     }
 }
 
+
 class PlayCard extends Control {
     constructor (parentNode, cardName1, num, imgURL){
         super(parentNode, 'div', 'dash_item', '');
         this.cardName = cardName1;
         this.num=num;
         this.sideA = new Button (this.node, 'card_side card_side_a', '',()=>{
-            this.play();
+           if (this.active) {
+               this.active = false;
+               this.play();
+           }
         });
+        this.active = true;
         let imgWrapper = new Control(this.sideA.node,'div', 'card_img', '');
         this.sideA.img = new Control(imgWrapper.node,'img', '', '');
         this.sideA.img.node.src = imgURL;
@@ -122,14 +127,38 @@ class PlayCard extends Control {
     }
 
     play (){
-        if (this.num == seqPos){
+        //starBlock.node.innerHtml='';
+        
+        if (this.cardName == cardSnd[0].name){
+            let star = new Control(starBlock.node, 'div', 'star_item star_item_ok', '');
             this.sideA.node.style = 'opacity: 50%; background-color:#00ff00';
         } else {
+            let star = new Control(starBlock.node, 'div', 'star_item star_item_err', '');
+            seqPos++;
+            //difWords.push(this.cardName); ///maybe its right
+            if (difWords.indexOf(cardSnd[0].name)==-1) {difWords.push(cardSnd[0].name);}
             this.sideA.node.style = 'opacity: 50%; background-color:#ff0000';
+            //cardSnd.push(cardSnd[seqPos]);
+            
         }
-        seqPos++;
-        if (seqPos == cards[app.category].length) {
+        if (cardSnd.length>0){
+                
+                cardSnd = cardSnd.filter((it)=>{
+                    return this.cardName != it.name;
+                });
+            }
+            
+        //seqPos++;
+        if (cardSnd[0]){
+            cardSnd[0].node.play();
+        }
+        if (cardSnd.length==0) {
            // playButton.click()
+           if (seqPos==0){
+            mdm.node.textContent = "Amazing! You havent any mistake";
+           } else {
+            mdm.node.textContent = "Youve got"+seqPos+" mistakes with words "+difWords.join(', ');
+           } 
            md.node.style='';
         }
        // this.sideB.node.style = 'z-index: 1; transform: perspective(500px) rotateY('+(180+deg)+'deg)';

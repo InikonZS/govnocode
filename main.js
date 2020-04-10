@@ -14,7 +14,20 @@ function menuClicker(j){
 }
 
 var seqPos=0;
+var difWords=[];
+var cardSnd=[];
 // entry point
+
+var gameControl = document.querySelector('.game_control');
+var repeatButton = new Button(gameControl, 'menu_button', 'repeat word',()=>{
+    if (app.gameMode) {
+        cardSnd[0].node.play();
+    }   
+});
+
+var starBlock = new Control(gameControl, 'div', 'star_block', '');
+
+
 var mainNode = document.querySelector('#app-main-node');
 //var app = new Control(mainNode, 'div', 'basic_block', 'rslang');
 
@@ -26,6 +39,7 @@ app.category = 1;
 
 var md = new Control(app.node, 'div', 'dash_modal', '');
 var mdw = new Control(md.node, 'div', 'dash_modal_window', '');
+var mdm = new Control(mdw.node, 'div', 'menu_button', '');
 var mdb = new Button(mdw.node, 'menu_button', 'ok',()=>{
     md.node.style='display:none';
     playButton.click();
@@ -51,12 +65,28 @@ var playButton = new Button(btNode, 'menu_button', 'click to play', ()=>{
         dash.destroy();
         dash = new Control(app.node, 'div', 'basic_block dash_wrapper', '');
         app.gameMode = 1;
+        starBlock.node.textContent='';
         playButton.node.textContent = 'stop game';
+        difWords=[];
         let j = app.category;
         let cardIds = [];
         for (let i=0; i<cards[1].length; i++){
             cardIds.push(i);
         }
+        cardIds.sort(()=>Math.random()-0.5);
+
+        cardSnd = [];
+        for (let iq=0; iq<cards[1].length; iq++){
+            //cardIds.push(i);
+            let i = cardIds[iq];
+            let aud = new Control(mainNode, 'audio','','');
+            aud.node.src='assets/audio/'+cards[j][i].word+'.mp3';
+            aud.name = cards[j][i].word;
+            cardSnd.push(aud);
+        }
+        cardSnd[0].node.play();
+       
+        
         cardIds.sort(()=>Math.random()-0.5);
 
         for (let iq=0; iq<cards[1].length; iq++){
@@ -65,6 +95,7 @@ var playButton = new Button(btNode, 'menu_button', 'click to play', ()=>{
             let el = new PlayCard(dash.node, cards[j][i].word, i, 'assets/'+cards[j][i].image);
             dash.childList.push(el);       
         }
+
         seqPos=0;
     }
 
