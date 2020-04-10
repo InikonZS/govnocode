@@ -1,0 +1,11 @@
+{
+  "name": "rslang-app",
+  "version": "1.0.0",
+  "description": "rslang applicataion by Inikon",
+  "main": "main.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "InikonZS",
+  "license": "ISC"
+}
