@@ -175,6 +175,14 @@
     margin: 5px;
 }
 
+.star_item_ok{
+    background-color: #00ff00;  
+}
+
+.star_item_err{
+    background-color: #ff0000;  
+}
+
 body{
     margin:0px;
     padding:0px;
