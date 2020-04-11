@@ -75,6 +75,7 @@ class DoubleCard extends Control {
         this.sideB.name = new Control(this.sideB.node,'div', 'card_name', cardName2);
         let imgWrapper = new Control(this.sideB.node,'div', 'card_img', '');
         this.sideB.img = new Control(imgWrapper.node,'img', '', '');
+        imgWrapper.node.style='transform: rotateY(180deg);'
         this.sideB.img.node.src = imgURL;
         this.sideB.node.style = 'z-index: 1; transform: perspective(500px) rotateY('+(180)+'deg)';
 
@@ -162,5 +163,20 @@ class PlayCard extends Control {
            md.node.style='';
         }
        // this.sideB.node.style = 'z-index: 1; transform: perspective(500px) rotateY('+(180+deg)+'deg)';
+    }
+}
+
+class CategoryCard extends Control {
+    constructor (parentNode, cardName1, num, imgURL){
+        super(parentNode, 'div', 'dash_item', '');
+        this.num=num;
+        this.sideA = new Button (this.node, 'card_side card_side_a', '',
+            menuClicker(num));
+        this.active = true;
+        this.cardName = new Control(this.sideA.node,'div', 'card_name', cardName1);
+        let imgWrapper = new Control(this.sideA.node,'div', 'card_img category_img', '');
+        this.sideA.img = new Control(imgWrapper.node,'img', '', '');
+        this.sideA.img.node.src = imgURL;
+        //this.rotate(0);
     }
 }
