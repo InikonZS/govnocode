@@ -184,3 +184,13 @@ var repeatButton = new Button(gameControl, 'menu_button', 'repeat word',()=>{
 var starBlock = new Control(gameControl, 'div', 'star_block', '');
 
 returnButton.click();
+
+
+
+var stat = document.querySelector('#app-stat');
+new Control(stat, 'h1', '', 'Statistic:'); 
+for (let i=0; i<cards[0].length; i++){
+    for (let j=0; j<cards[i+1].length; j++){
+        new Control(stat, 'p', '', cards[i+1][j].word + " ("+ cards[i+1][j].translation+")");    
+    }
+}
