@@ -1,5 +1,5 @@
 const cards = [ 
-  ['Action (set A)', 'Action (set B)', 'Animal (set A)', 'Animal (set B)', 'Clothes', 'Emotions'],
+  ['Action (set A)', 'Action (set B)', 'Animal (set A)', 'Animal (set B)', 'Clothes', 'Emotions', 'Coronavirus', 'Tools'],
   [
     {
       word: 'cry',
@@ -298,6 +298,106 @@ const cards = [
       translation: 'смех',
       image: 'img/laugh.jpg',
       audioSrc: 'audio/laugh.mp3'
+    }
+  ],
+  [
+    {
+      word: 'virus',
+      translation: 'вирус',
+      image: 'img/virus.jpg',
+      audioSrc: 'audio/virus.mp3'
+    },
+    {
+      word: 'ambulance',
+      translation: 'скорая помощь',
+      image: 'img/ambulance.jpg',
+      audioSrc: 'audio/ambulance.mp3'
+    },
+    {
+      word: 'doctor',
+      translation: 'врач',
+      image: 'img/doctor.jpg',
+      audioSrc: 'audio/doctor.mp3'
+    },
+    {
+      word: 'illness',
+      translation: 'болезнь',
+      image: 'img/illness.jpg',
+      audioSrc: 'audio/illness.mp3'
+    },
+    {
+      word: 'medicine',
+      translation: 'лекарство',
+      image: 'img/medicine.jpg',
+      audioSrc: 'audio/medicine.mp3'
+    },
+    {
+      word: 'cough',
+      translation: 'кашель',
+      image: 'img/cough.jpg',
+      audioSrc: 'audio/cough.mp3'
+    },
+    {
+      word: 'quarantine',
+      translation: 'карантин',
+      image: 'img/quarantine.jpg',
+      audioSrc: 'audio/quarantine.mp3'
+    },
+    {
+      word: 'hospital',
+      translation: 'больница',
+      image: 'img/hospital.jpg',
+      audioSrc: 'audio/hospital.mp3'
+    }
+  ],
+  [
+    {
+      word: 'hammer',
+      translation: 'молоток',
+      image: 'img/hammer.jpg',
+      audioSrc: 'audio/hammer.mp3'
+    },
+    {
+      word: 'pliers',
+      translation: 'пассатижи',
+      image: 'img/pliers.jpg',
+      audioSrc: 'audio/pliers.mp3'
+    },
+    {
+      word: 'screwdriver',
+      translation: 'отвертка',
+      image: 'img/screwdriver.jpg',
+      audioSrc: 'audio/screwdriver.mp3'
+    },
+    {
+      word: 'saw',
+      translation: 'пила',
+      image: 'img/saw.jpg',
+      audioSrc: 'audio/saw.mp3'
+    },
+    {
+      word: 'clamp',
+      translation: 'струбцина',
+      image: 'img/clamp.jpg',
+      audioSrc: 'audio/clamp.mp3'
+    },
+    {
+      word: 'soldering_iron',
+      translation: 'паяльник',
+      image: 'img/soldering_iron.jpg',
+      audioSrc: 'audio/soldering_iron.mp3'
+    },
+    {
+      word: 'wrench',
+      translation: 'гаечный ключ',
+      image: 'img/wrench.jpg',
+      audioSrc: 'audio/wrench.mp3'
+    },
+    {
+      word: 'crowbar',
+      translation: 'лом',
+      image: 'img/crowbar.jpg',
+      audioSrc: 'audio/crowbar.mp3'
     }
   ]
 ]

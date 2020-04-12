@@ -160,6 +160,10 @@ img{
     position: relative;
     width: calc(100% - 0px);
     top:0px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .dash_item{
