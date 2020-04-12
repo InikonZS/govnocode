@@ -108,6 +108,7 @@ var playButton = new Button(gameControl, 'menu_button', 'click to play', ()=>{
             let aud = new Control(mainNode, 'audio','','');
             aud.node.src='assets/audio/'+cards[j][i].word+'.mp3';
             aud.name = cards[j][i].word;
+            aud.statName =cards[j][i].word + " ("+ cards[j][i].translation+")";
             cardSnd.push(aud);
         }
         cardSnd[0].node.play();
@@ -186,11 +187,40 @@ var starBlock = new Control(gameControl, 'div', 'star_block', '');
 returnButton.click();
 
 
+var statData=[];
+class StatRecord {
+    constructor(name, win, fail){
+        this.name = name;
+        this.win = win;
+        this.fail = fail;
+    }
+}
+for (let i=0; i<cards[0].length; i++){
+    for (let j=0; j<cards[i+1].length; j++){
+        statData.push(new StatRecord(cards[i+1][j].word + " ("+ cards[i+1][j].translation+")", 0, 0));    
+    }
+}
 
 var stat = document.querySelector('#app-stat');
-new Control(stat, 'h1', '', 'Statistic:'); 
-for (let i=0; i<cards[0].length; i++){
+function refreshStat(){
+    stat.textContent='';
+    new Control(stat, 'h1', '', 'Statistic:');    
+    for (let i=0; i<statData.length; i++){
+        new Control(stat, 'p', '', statData[i].name + " " + statData[i].fail);     
+    }    
+}
+refreshStat();
+
+/*for (let i=0; i<cards[0].length; i++){
     for (let j=0; j<cards[i+1].length; j++){
         new Control(stat, 'p', '', cards[i+1][j].word + " ("+ cards[i+1][j].translation+")");    
     }
-}
+}*/
+
+
+/*
+var snde =  new Control(stat, 'audio', '', '');
+var btt = new Button(stat, '', 'play',()=>{
+    snde.node.src="https://wooordhunt.ru/data/sound/word/us/mp3/"+'word'+".mp3";
+    snde.node.play();
+});*/

@@ -137,7 +137,12 @@ class PlayCard extends Control {
             let star = new Control(starBlock.node, 'div', 'star_item star_item_err', '');
             seqPos++;
             //difWords.push(this.cardName); ///maybe its right
-            if (difWords.indexOf(cardSnd[0].name)==-1) {difWords.push(cardSnd[0].name);}
+            if (difWords.indexOf(cardSnd[0].name)==-1) {
+                difWords.push(cardSnd[0].name);
+
+
+                statData.forEach((it, i, arr)=>{if(it.name==cardSnd[0].statName){arr[i].fail++;}});
+            }
             this.sideA.node.style = 'opacity: 50%; background-color:#ff0000';
             //cardSnd.push(cardSnd[seqPos]);
             
@@ -158,8 +163,9 @@ class PlayCard extends Control {
            if (seqPos==0){
             mdm.node.textContent = "Amazing! You havent any mistake";
            } else {
-            mdm.node.textContent = "Youve got"+seqPos+" mistakes with words "+difWords.join(', ');
+            mdm.node.textContent = "Youve got "+seqPos+" mistakes with words "+difWords.join(', ');
            } 
+           refreshStat();
            md.node.style='';
         }
        // this.sideB.node.style = 'z-index: 1; transform: perspective(500px) rotateY('+(180+deg)+'deg)';
